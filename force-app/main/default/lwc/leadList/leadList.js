@@ -49,16 +49,20 @@ export default class LeadList extends NavigationMixin(LightningElement) {
     handleSearchTermChange(event) {
         this.searchTerm = event.target.value;
         if (this.leads) {
+			//creates a custom event - 'newsearch' with the input searchTerm
+			//that contains the search keyword entered by the user
             const selectedEvent = new CustomEvent('newsearch', {detail: this.searchTerm});
             window.clearTimeout(this.delayTimeout);
             // eslint-disable-next-line @lwc/lwc/no-async-operation
             this.delayTimeout = setTimeout(() => {
+				//fires the event before the searchcomplete event
                 this.dispatchEvent(selectedEvent);
             }, DELAY);
         }
 
     }
 
+	//wire is called everytime a page is loaded
     @wire(searchLeads, {
         searchTerm: '$searchTerm'
     })

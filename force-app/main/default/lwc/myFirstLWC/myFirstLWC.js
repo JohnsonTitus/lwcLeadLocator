@@ -1,7 +1,10 @@
 import { LightningElement, track } from 'lwc';
 
 export default class MyFirstLWC extends LightningElement {
-    @track searchTerm;
+    //track decorator are to declare the property as private
+	//both searchTerm and searchInput has the keyword
+	//value entered by the user
+	@track searchTerm;
     @track searchInput;
     @track searchComplete = false;
 
