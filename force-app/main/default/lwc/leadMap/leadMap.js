@@ -28,6 +28,7 @@ export default class leadMap extends LightningElement {
             this.leads = [];
             this.markers = [];
             this.leads = data;
+			//each element relating to Street, State, City, PostalCode, title and Company of data array is mapped to the format within the return block
             this.markers = data.map(lead => {
                 return {
                     location: {
